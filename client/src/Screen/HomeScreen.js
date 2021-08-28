@@ -29,11 +29,12 @@ export default function HomeScreen(props) {
               else if (product.name.toLowerCase().includes(search.toLowerCase()))
                 return product
             }).map(product => (
-            <div className="card" style={{ width: "18rem", marginTop: "1rem" }} key={product._id}>
+            <div className="card" style={{ width: "18rem", marginTop: "2rem" }} key={product._id}>
               <Link to={`/product/${product._id}`}><img
                 src={product.images[0]}
                 className="card-img-top"
-                alt="..."
+                  alt="..."
+                  width="400" height="400"
               /></Link>
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>

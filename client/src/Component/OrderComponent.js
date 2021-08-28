@@ -11,8 +11,8 @@ export default function OrderComponent() {
     }, [])
     return (
         <>
-            <center><h3>Order product's</h3></center>
-            <table class="table">
+            <h3 style={{"marginTop":"0.5rem"}}>Order product's</h3><br/>
+            <table class="table"align="center">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
