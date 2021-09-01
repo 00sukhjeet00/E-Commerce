@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
+const path=require('path')
 const mongoose = require('mongoose')
 const { v4: uuidv4 } = require('uuid')
 const Stripe = require('stripe')
@@ -62,4 +63,12 @@ app.post('/payment', (req, res) => {
         }).then(result => { res.status(200).json("Success") })
         .catch(err => { console.log(err) })
 })
-app.listen(5000, () => { console.log('Server Started...') })
+const port = process.env.PORT || 5000
+if (process.env.NODE_ENV === 'production')
+{
+    app.use(express.static(path.join(__dirname, "client/build")))
+    app.get("*", function (req, res) {
+        res.sendFile(path.join(__dirname, "client/build", "index.html"))
+    })
+}
+app.listen(port, () => { console.log('Server Started...') })
